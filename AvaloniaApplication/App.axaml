@@ -1,0 +1,39 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="AvaloniaApplication.App"
+             xmlns:local="using:AvaloniaApplication"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+  
+    <Application.Styles>
+        <FluentTheme/>
+        <StyleInclude Source="Styles/LargeLabelControl.axaml"></StyleInclude>
+    </Application.Styles>
+    <Application.Resources>
+        <FontFamily x:Key="AtkinsonMono-Bold">avares://AvaloniaApplication/Assets/Fonts/AtkinsonHyperlegibleMono-Bold.ttf#Atkinson</FontFamily>
+        <FontFamily x:Key="AtkinsonMono-Light">avares://AvaloniaApplication/Assets/Fonts/AtkinsonHyperlegibleMono-Light.ttf#Atkinson</FontFamily>
+        <FontFamily x:Key="DancingScript-Bold">avares://AvaloniaApplication/Assets/Fonts/DancingScript-Bold.ttf#Dancing</FontFamily>
+        <FontFamily x:Key="DancingScript-Regular">avares://AvaloniaApplication/Assets/Fonts/DancingScript-Regular.ttf#Dancing</FontFamily>
+        <FontFamily x:Key="Barlow-ExtraBoldItalic">avares://AvaloniaApplication/Assets/Fonts/Barlow-ExtraBoldItalic.ttf#Barlow</FontFamily>
+        <FontFamily x:Key="AtkinsonMono-LightItalic">avares://AvaloniaApplication/Assets/Fonts/AtkinsonHyperlegibleMono-LightItalic.ttf#Atkinson</FontFamily>
+        <FontFamily x:Key="Outfit-Light">avares://AvaloniaApplication/Assets/Fonts/Outfit-Light.ttf#Outfit</FontFamily>
+        <FontFamily x:Key="Barlow-Italic">avares://AvaloniaApplication/Assets/Fonts/Barlow-Italic.ttf#barlow</FontFamily>
+        <FontFamily x:Key="Jacquard-Regular">avares://AvaloniaApplication/Assets/Fonts/Jacquard24-Regular.ttf#Jacquard</FontFamily>
+        
+
+        <SolidColorBrush x:Key="MidPinkBrush">#B43982</SolidColorBrush>
+        <SolidColorBrush x:Key="TyrianPurpleBrush">#68104B</SolidColorBrush>
+        <SolidColorBrush x:Key="OrchidPurpleBrush">#B55AD3</SolidColorBrush>
+        <SolidColorBrush x:Key="PalePinkBrush">#FFEDFC</SolidColorBrush>
+        <SolidColorBrush x:Key="DarkRaspberryBrush">#872B68</SolidColorBrush>
+        <SolidColorBrush x:Key="CherryRedBrush">#C30003</SolidColorBrush>
+        <SolidColorBrush x:Key="PlumPinkBrush">#DDA0DD</SolidColorBrush>
+        <SolidColorBrush x:Key="LavenderPurpleBrush">#C480F8</SolidColorBrush>
+        <SolidColorBrush x:Key="NeonVioletBrush">#E8209E</SolidColorBrush>
+        
+    </Application.Resources>
+</Application>
