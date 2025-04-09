@@ -6,9 +6,9 @@ namespace AvaloniaApplication.ViewModels;
 public partial class ViewModelBase : ObservableObject
 {
     [ObservableProperty]
-    private string _boldTitle = "Avalonia";
+    private string _boldTitle = "AVALONIA";
     [ObservableProperty]
-    private string _regularTitle = "Loudness Meter";
+    private string _regularTitle = "LOUDNESS METER";
     [ObservableProperty]
     private bool _channelConfigListIsOpen = false;
 

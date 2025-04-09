@@ -14,7 +14,7 @@
     <Setter Property="FontFamily" Value="{DynamicResource Outfit-Light}"></Setter>
     <Setter Property="Template">
       <ControlTemplate>
-        <Border Padding="15,7 " Background="{TemplateBinding Background}">
+        <Border Padding="15,7.5 " Background="{TemplateBinding Background}">
         <StackPanel>
           <Label HorizontalAlignment="Center" Padding="0" FontSize="21" Content="{TemplateBinding LargeText}"/>
           <Label HorizontalAlignment="Center" Padding="0" FontSize="11" Content="{TemplateBinding SmallText}"/>

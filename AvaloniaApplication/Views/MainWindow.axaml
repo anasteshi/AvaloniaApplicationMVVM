@@ -1,4 +1,4 @@
-<UserControl xmlns="https://github.com/avaloniaui"
+<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -10,7 +10,7 @@
         x:Class="AvaloniaApplication.Views.MainWindow"
         x:DataType="commands:ViewModelBase">
     <Design.DataContext><commands:ViewModelBase></commands:ViewModelBase></Design.DataContext>
-    <UserControl.Styles>
+    <Window.Styles>
         <Style Selector="Button.small">
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="Foreground" Value="White"/>
@@ -23,7 +23,7 @@
             <Setter Property="TextBlock.Foreground" Value="White"></Setter>
                             
         </Style>
-    </UserControl.Styles>
+    </Window.Styles>
     <!-- Main Grid -->
     <Grid Name="MainGrid" RowDefinitions="Auto, *, Auto">
         <!--Channel Config Popup -->
@@ -71,8 +71,8 @@
                     <Image Source="avares://AvaloniaApplication/Assets/lock_icon.png"/>
                 </Button>
                 <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
-                    <Label Foreground="{DynamicResource TyrianPurpleBrush}" FontFamily="{StaticResource ResourceKey=Barlow-ExtraBoldItalic}" FontSize="24">AVALONIA</Label>
-                    <Label Foreground="{DynamicResource TyrianPurpleBrush}" FontFamily="{StaticResource ResourceKey=Barlow-Italic}" FontSize="24">LOUDNESS METER</Label>
+                    <Label Content="{Binding BoldTitle}" Foreground="{DynamicResource TyrianPurpleBrush}" FontFamily="{StaticResource ResourceKey=Barlow-ExtraBoldItalic}" FontSize="24"></Label>
+                    <Label Content="{Binding RegularTitle}"  Foreground="{DynamicResource TyrianPurpleBrush}" FontFamily="{StaticResource ResourceKey=Barlow-Italic}" FontSize="24"></Label>
                 </StackPanel>
                 <Button Grid.Column="3" Padding="0,10,0,10">
                     <Image Source="avares://AvaloniaApplication/Assets/export_icon.png"/>
@@ -121,12 +121,11 @@
                                    <!-- additional margin cuz it just doesnt work-->
                         <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="11" Width="20" RowDefinitions="23*, 37*" HorizontalAlignment="Left" Margin="18, 0">
                             <Rectangle Grid.Row="0" Margin="0, 6, 0, -6" Fill="{DynamicResource CherryRedBrush}" Width="20"></Rectangle>
-                            <Rectangle Grid.Row="1" Margin="0, 6, 0, 0" Fill="White" Width="20"></Rectangle>
+                            <Rectangle Grid.Row="1" Margin="0, 6, 0, 6" Fill="White" Width="20"></Rectangle>
                             <Canvas Grid.Row="0">
                             </Canvas>
                         </Grid>
-
-
+                        
                         <Label Grid.Column="1" Grid.Row="0">—</Label>
                         <Label Grid.Column="1" Grid.Row="1">—</Label>
                         <Label Grid.Column="1" Grid.Row="2">—</Label>
@@ -148,7 +147,7 @@
 
                     
                     <!-- LUFS label -->
-                    <Label Grid.Row="1" Foreground="White" FontSize="20" HorizontalAlignment="Center" Margin="0, 5">LUFS</Label>
+                    <Label Grid.Row="1" Foreground="White" FontSize="20" HorizontalAlignment="Center" Margin="0, 0" >LUFS</Label>
                    
                     <!-- Volume Bar Buttons -->
                     <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
@@ -178,7 +177,7 @@
                     </StackPanel>
                 </StackPanel>
                 <!-- Graph -->
-                <Rectangle Grid.Column="2" Fill="{DynamicResource PlumPinkBrush}" Margin="0,0,0,0"></Rectangle>
+                <Rectangle Grid.Column="2" Fill="{DynamicResource PlumPinkBrush}" Margin="0,0,0,1"></Rectangle>
             </Grid>
             <!-- Bottom Bar -->
             <Grid Grid.Row="2" Margin="20, 10" ColumnDefinitions="Auto, Auto, *, Auto, Auto, Auto, Auto, Auto">
@@ -256,4 +255,4 @@
             </Grid>
 
         </Grid>
-</UserControl>
+</Window>

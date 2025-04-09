@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0xzHATfuMqU=",
+  "dgSpecHash": "/tFCq+waMro=",
   "success": true,
   "projectFilePath": "/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/AvaloniaApplication.csproj",
   "expectedPackageFiles": [
@@ -20,7 +20,7 @@
     "/Users/anastasiiakholodiuk/.nuget/packages/avalonia.themes.simple/11.2.1/avalonia.themes.simple.11.2.1.nupkg.sha512",
     "/Users/anastasiiakholodiuk/.nuget/packages/avalonia.win32/11.2.1/avalonia.win32.11.2.1.nupkg.sha512",
     "/Users/anastasiiakholodiuk/.nuget/packages/avalonia.x11/11.2.1/avalonia.x11.11.2.1.nupkg.sha512",
-    "/Users/anastasiiakholodiuk/.nuget/packages/communitytoolkit.mvvm/8.2.1/communitytoolkit.mvvm.8.2.1.nupkg.sha512",
+    "/Users/anastasiiakholodiuk/.nuget/packages/communitytoolkit.mvvm/8.4.0/communitytoolkit.mvvm.8.4.0.nupkg.sha512",
     "/Users/anastasiiakholodiuk/.nuget/packages/harfbuzzsharp/7.3.0.2/harfbuzzsharp.7.3.0.2.nupkg.sha512",
     "/Users/anastasiiakholodiuk/.nuget/packages/harfbuzzsharp.nativeassets.linux/7.3.0.2/harfbuzzsharp.nativeassets.linux.7.3.0.2.nupkg.sha512",
     "/Users/anastasiiakholodiuk/.nuget/packages/harfbuzzsharp.nativeassets.macos/7.3.0.2/harfbuzzsharp.nativeassets.macos.7.3.0.2.nupkg.sha512",
