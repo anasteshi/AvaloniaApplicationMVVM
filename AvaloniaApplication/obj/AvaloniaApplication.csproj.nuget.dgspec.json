@@ -61,6 +61,10 @@
               "target": "Package",
               "version": "[11.2.1, )"
             },
+            "Avalonia.Native": {
+              "target": "Package",
+              "version": "[11.2.1, )"
+            },
             "Avalonia.Themes.Fluent": {
               "target": "Package",
               "version": "[11.2.1, )"

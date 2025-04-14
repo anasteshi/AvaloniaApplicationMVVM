@@ -6,9 +6,6 @@
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/AvaloniaApplication.AssemblyInfo.cs
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/AvaloniaApplication.csproj.CoreCompileInputs.cache
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/AvaloniaApplication.sourcelink.json
-/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/Avalonia/AvaloniaApplication.dll
-/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/Avalonia/AvaloniaApplication.pdb
-/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/refint/Avalonia/AvaloniaApplication.dll
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/bin/Debug/net9.0/AvaloniaApplication
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/bin/Debug/net9.0/AvaloniaApplication.deps.json
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/bin/Debug/net9.0/AvaloniaApplication.runtimeconfig.json
@@ -66,3 +63,6 @@
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/Avalonia.358D655D.Up2Date
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/AvaloniaApplication.genruntimeconfig.cache
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/ref/AvaloniaApplication.dll
+/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/Avalonia/AvaloniaApplication.dll
+/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/Avalonia/AvaloniaApplication.pdb
+/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/refint/Avalonia/AvaloniaApplication.dll

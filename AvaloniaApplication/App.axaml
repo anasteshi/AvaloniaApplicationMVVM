@@ -12,6 +12,8 @@
     <Application.Styles>
         <FluentTheme/>
         <StyleInclude Source="Styles/LargeLabelControl.axaml"></StyleInclude>
+        <StyleInclude Source="Styles/AnimatedPopup.axaml"></StyleInclude>
+
     </Application.Styles>
     <Application.Resources>
         <FontFamily x:Key="AtkinsonMono-Bold">avares://AvaloniaApplication/Assets/Fonts/AtkinsonHyperlegibleMono-Bold.ttf#Atkinson</FontFamily>

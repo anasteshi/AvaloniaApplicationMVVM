@@ -29,6 +29,9 @@ build_property.EnableCodeStyleSeverity =
 [/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/Styles/AnimatedPopup.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/Styles/LargeLabelControl.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 

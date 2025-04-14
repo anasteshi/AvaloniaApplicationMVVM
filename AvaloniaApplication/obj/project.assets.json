@@ -1480,6 +1480,7 @@
       "Avalonia.Desktop >= 11.2.1",
       "Avalonia.Diagnostics >= 11.2.1",
       "Avalonia.Fonts.Inter >= 11.2.1",
+      "Avalonia.Native >= 11.2.1",
       "Avalonia.Themes.Fluent >= 11.2.1",
       "CommunityToolkit.Mvvm >= 8.4.0"
     ]
@@ -1541,6 +1542,10 @@
             "version": "[11.2.1, )"
           },
           "Avalonia.Fonts.Inter": {
+            "target": "Package",
+            "version": "[11.2.1, )"
+          },
+          "Avalonia.Native": {
             "target": "Package",
             "version": "[11.2.1, )"
           },
