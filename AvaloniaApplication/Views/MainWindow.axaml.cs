@@ -32,16 +32,21 @@ public partial class MainWindow : Window
         InitializeComponent();
         DataContext = new ViewModelBase();
         Title = "Avalonia Loudness Meter";
-        mChannelConfigurationButton = this.FindControl<Button>("ChannelConfigButton") ?? throw new Exception("Cannot find Channel Configuration Button by name");
-        mChannelConfigurationPopup = this.FindControl<Control>("ChannelConfigPopup") ?? throw new Exception("Cannot find Channel Config Popup by name");
-        mMainGrid = this.FindControl<Control>("MainGrid") ?? throw new Exception("Cannot find Main Grid by name");
+        mChannelConfigurationButton = this.FindControl<Button>("ChannelConfigButton") ??
+                                      throw new Exception("Cannot find Channel Configuration Button by name");
+        mChannelConfigurationPopup = this.FindControl<Control>("ChannelConfigPopup") ??
+                                     throw new Exception("Cannot find Channel Config Popup by name");
+        mMainGrid = this.FindControl<Control>("MainGrid") ??
+                    throw new Exception("Cannot find Main Grid by name");
         this.Loaded += MainWindow_Loaded;
     }
 
     private void MainWindow_Loaded(object sender, EventArgs e)
     {
         //Get relative position of button, in relation to main grid
-        var position = mChannelConfigurationButton.TranslatePoint(new Point(), mMainGrid) ?? throw new Exception("Cannot get Translate Point from Configuration Button");
+        var position = mChannelConfigurationButton.TranslatePoint(new Point(), mMainGrid) ??
+                       throw new Exception("Cannot get Translate Point from Configuration Button");
+        
         //Set margin of popup so it appears bottom left of button
         mChannelConfigurationPopup.Margin = new Thickness(
             position.X,

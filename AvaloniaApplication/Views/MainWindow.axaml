@@ -22,20 +22,6 @@
             <Setter Property="Background" Value="{DynamicResource OrchidPurpleBrush}"></Setter>
             <Setter Property="TextBlock.Foreground" Value="White"></Setter>
         </Style>
-        <Style Selector="controls|AnimatedPopup.channel">
-            <Setter Property="Width" Value="0"></Setter>
-            <Setter Property="Height" Value="0"></Setter>
-            <Setter Property="Transitions">
-                <Transitions>
-                    <DoubleTransition Property="Width" Duration="0:0:0.17" Easing="QuadraticEaseIn"></DoubleTransition>
-                    <DoubleTransition Property="Height" Duration="0:0:0.17" Easing="QuadraticEaseIn"></DoubleTransition>
-                </Transitions>
-            </Setter>
-        </Style>
-        <Style Selector="controls|AnimatedPopup.channel.open">
-            <Setter Property="Width" Value="300"></Setter>
-            <Setter Property="Height" Value="600"></Setter>
-        </Style>
     </Window.Styles>
     <!-- Main Grid -->
     <Grid Name="MainGrid" RowDefinitions="Auto, *, Auto">
@@ -50,13 +36,19 @@
         
         <!--Channel Config Popup -->
         <controls:AnimatedPopup Grid.Row="0" Grid.RowSpan="3"
-                Name="ChannelConfigPopup"
-                Classes="channel"
-                Classes.open="{Binding ChannelConfigListIsOpen}"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Bottom"
-                Margin="20,0,0,15">
-            <Label Content=":P" Foreground="DarkRed" Background="Black"></Label>
+                Name="ChannelConfigPopup">
+            <Border Padding="20" Background="Aquamarine" BorderThickness="1" BorderBrush="Azure" CornerRadius="5">
+                <StackPanel>
+                    <Label Content="Blablablablabla"></Label>
+                    <Label Content="Blablablablabla"></Label>
+                    <Label Content="Blablablablabla"></Label>
+                    <Label Content="Blablablablabla"></Label>
+                    <Label Content="Blablablablabla"></Label>
+                    <Label Content="Blablablablabla"></Label>
+                    <Label Content="Blablablablabla"></Label>
+                    <Label Content="Blablablablabla"></Label>
+                </StackPanel>
+            </Border>
         </controls:AnimatedPopup>
         <!-- Top Bar -->
             <Grid Grid.Row="0" Background="{DynamicResource PalePinkBrush}" 
