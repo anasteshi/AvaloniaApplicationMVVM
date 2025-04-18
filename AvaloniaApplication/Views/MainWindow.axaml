@@ -36,7 +36,9 @@
         
         <!--Channel Config Popup -->
         <controls:AnimatedPopup Grid.Row="0" Grid.RowSpan="3"
-                Name="ChannelConfigPopup">
+                Name="ChannelConfigPopup"
+                AnimationTime="0.3"
+                Open="False">
             <Border Padding="20" Background="Aquamarine" BorderThickness="1" BorderBrush="Azure" CornerRadius="5">
                 <StackPanel>
                     <Label Content="Blablablablabla"></Label>
@@ -195,7 +197,7 @@
             <!-- Bottom Bar -->
             <Grid Grid.Row="2" Margin="20, 10" ColumnDefinitions="Auto, Auto, *, Auto, Auto, Auto, Auto, Auto">
                 <Button Grid.Column="0"
-                       Command="{Binding ChannelConfigButtonPressedCommand}"
+                       Command="{Binding #ChannelConfigPopup.BeginOpen}"
                        Name="ChannelConfigButton" Margin="0,0,20,0" HorizontalAlignment="Center" VerticalAlignment="Center">Stereo</Button>
                 <Button Grid.Column="1" Margin="0,0,20,0" FontFamily="{StaticResource DancingScript-Regular}"
                         HorizontalAlignment="Center" VerticalAlignment="Center">Youtube</Button>
