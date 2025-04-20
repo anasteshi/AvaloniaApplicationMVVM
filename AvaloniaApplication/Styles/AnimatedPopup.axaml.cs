@@ -98,6 +98,11 @@ public partial class AnimatedPopup : ContentControl
         get => _open;
         set
         {
+            //If the value hasn't changed...
+            if (value == _open)
+                //Do nothing
+                return;
+            
             //If opening...
             if (value)
             {
@@ -112,10 +117,19 @@ public partial class AnimatedPopup : ContentControl
                         mUnderlayControl.SetValue(Grid.ColumnSpanProperty, grid.ColumnDefinitions.Count);
                 
                     //Insert the underlay control
-                    grid.Children.Insert(0, mUnderlayControl);;
-                
+                    if (!grid.Children.Contains(mUnderlayControl)) 
+                        grid.Children.Insert(0, mUnderlayControl);;
                 }
             }
+            //If closing...
+            else
+            {
+                //If the control is currently fully open...
+                if (IsOpened)
+                    //Update the desired size
+                    UpdateDesiredSize();
+            }
+            
             SetAndRaise(OpenProperty, ref _open, value);
         }
     }
@@ -133,6 +147,19 @@ public partial class AnimatedPopup : ContentControl
         set => SetAndRaise(AnimationTimeProperty, ref _animationTime, value);
     }
 
+    #endregion
+
+    #region Animate Opacity
+    private bool _animateOpacity;
+
+    public static readonly DirectProperty<AnimatedPopup, bool> AnimateOpacityProperty = AvaloniaProperty.RegisterDirect<AnimatedPopup, bool>(
+        nameof(AnimateOpacity), o => o.AnimateOpacity, (o, v) => o.AnimateOpacity = v);
+
+    public bool AnimateOpacity
+    {
+        get => _animateOpacity;
+        set => SetAndRaise(AnimateOpacityProperty, ref _animateOpacity, value);
+    }
     #endregion
 
     #region Underlay Opacity
@@ -213,8 +240,8 @@ public partial class AnimatedPopup : ContentControl
 
            Dispatcher.UIThread.InvokeAsync(() =>
            {
-               //Set the desired size
-               mDesiredSize = DesiredSize - Margin;
+               //Update desired size
+               UpdateDesiredSize();
                
                //Update animation
                UpdateAnimation();
@@ -229,11 +256,19 @@ public partial class AnimatedPopup : ContentControl
        mAnimationTimer.Tick += (s, e) => AnimationTick();
 
     }
-    
     #endregion
 
-    #region Private Methods
+     #region Private Methods
 
+    /// <summary>
+    /// Update the animation desired size based on the current desired size
+    /// </summary>
+    private void UpdateDesiredSize()
+    {
+        //Set the desired size
+        mDesiredSize = DesiredSize - Margin;
+    }
+    
     /// <summary>
     /// Calculate and start any new required animations
     /// </summary>
@@ -256,8 +291,11 @@ public partial class AnimatedPopup : ContentControl
         if (_open)
         {
             //Set size to the desired size
-            Width = mDesiredSize.Width;
-            Height = mDesiredSize.Height;
+            Width = double.NaN;
+            Height = double.NaN;
+
+            //Make sure opacity is set to the original value
+            Opacity = mOriginalOpacity;
         }
         //If closed...
         else
@@ -339,6 +377,10 @@ public partial class AnimatedPopup : ContentControl
         //Do our animation
         Width = finalWidth;
         Height = finalHeight;
+        
+        //Animate opacity
+        if (AnimateOpacity) 
+           Opacity = mOriginalOpacity * easing.Ease(percentageAnimated);
         
         //Animate underlay opacity
         mUnderlayControl.Opacity = _underlayOpacity * easing.Ease(percentageAnimated);

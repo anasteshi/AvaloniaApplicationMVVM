@@ -33,16 +33,21 @@
                 AnimationTime="0.3"
                 Open="False">
             <Border Padding="20" Background="{DynamicResource PalePinkBrush}" BorderThickness="1" BorderBrush="Azure" CornerRadius="5">
-                <StackPanel>
-                    <Label Content="Blablablablabla"></Label>
-                    <Label Content="Blablablablabla"></Label>
-                    <Label Content="Blablablablabla"></Label>
-                    <Label Content="Blablablablabla"></Label>
-                    <Label Content="Blablablablabla"></Label>
-                    <Label Content="Blablablablabla"></Label>
-                    <Label Content="Blablablablabla"></Label>
-                    <Label Content="Blablablablabla"></Label>
-                </StackPanel>
+                <Expander IsExpanded="True">
+                    <Expander.Header>
+                         <Label Content="This is a header"></Label>
+                    </Expander.Header>
+                    <StackPanel>
+                        <Label Content="Blablablablabla"></Label>
+                        <Label Content="Blablablablabla"></Label>
+                        <Label Content="Blablablablabla"></Label>
+                        <Label Content="Blablablablabla"></Label>
+                        <Label Content="Blablablablabla"></Label>
+                        <Label Content="Blablablablabla"></Label>
+                        <Label Content="Blablablablabla"></Label>
+                        <Label Content="Blablablablabla"></Label>
+                    </StackPanel>
+                </Expander>
             </Border>
         </controls:AnimatedPopup>
         <!-- Top Bar -->
