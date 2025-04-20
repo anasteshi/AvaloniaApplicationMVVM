@@ -8,6 +8,7 @@
         Width="1048" Height="645"
         x:Class="AvaloniaApplication.Views.MainWindow"
         x:DataType="commands:ViewModelBase"
+        Background="{DynamicResource PalePinkBrush}"
         CanResize="False">
     <Design.DataContext><commands:ViewModelBase></commands:ViewModelBase></Design.DataContext>
     <Window.Styles>
@@ -26,20 +27,12 @@
     <!-- Main Grid -->
     <Grid Name="MainGrid" RowDefinitions="Auto, *, Auto">
         
-        <!--Channel Config Popup Closer-->
-        <Border Grid.Row="0" Grid.RowSpan="3"
-            Background="Transparent"
-            ZIndex="1"
-            IsVisible="{Binding ChannelConfigListIsOpen}"
-            PointerPressed="InputElement_OnPointerPressed"></Border>
-        
-        
         <!--Channel Config Popup -->
         <controls:AnimatedPopup Grid.Row="0" Grid.RowSpan="3"
                 Name="ChannelConfigPopup"
                 AnimationTime="0.3"
                 Open="False">
-            <Border Padding="20" Background="Aquamarine" BorderThickness="1" BorderBrush="Azure" CornerRadius="5">
+            <Border Padding="20" Background="{DynamicResource PalePinkBrush}" BorderThickness="1" BorderBrush="Azure" CornerRadius="5">
                 <StackPanel>
                     <Label Content="Blablablablabla"></Label>
                     <Label Content="Blablablablabla"></Label>
