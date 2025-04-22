@@ -4,6 +4,7 @@ using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
+using AvaloniaApplication.Services;
 using AvaloniaApplication.ViewModels;
 using AvaloniaApplication.Views;
 
@@ -18,6 +19,10 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        // Initialize the dependencies
+        var audioInterface = new DummyAudioInterfaceService();
+        var viewModel = new ViewModelBase(audioInterface);
+        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
@@ -25,7 +30,7 @@ public partial class App : Application
             DisableAvaloniaDataAnnotationValidation();
             desktop.MainWindow = new MainWindow
             {
-                DataContext = new ViewModelBase(),
+                DataContext = viewModel
             };
         }
 

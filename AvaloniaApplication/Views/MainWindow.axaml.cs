@@ -20,6 +20,7 @@ public partial class MainWindow : Window
     #endregion
 
     #region Constructor
+
     /// <summary>
     /// Default Constructor
     /// </summary>
@@ -27,6 +28,14 @@ public partial class MainWindow : Window
     
 
     #endregion
+    //STH WRONG
+    protected override async void OnInitialized()
+    {
+        await((ViewModelBase)DataContext).LoadSettingsCommand.ExecuteAsync(null);
+        base.OnInitialized();
+    }
+
+
     public MainWindow()
     {
         InitializeComponent();
