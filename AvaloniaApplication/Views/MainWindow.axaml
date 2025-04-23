@@ -1,4 +1,4 @@
-<Window xmlns="https://github.com/avaloniaui"
+<UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -7,12 +7,12 @@
         mc:Ignorable="d" d:DesignWidth="1048" d:DesignHeight="645"
         Width="1048" Height="645"
         x:Class="AvaloniaApplication.Views.MainWindow"
-        x:DataType="commands:ViewModelBase"
-        Background="{DynamicResource PalePinkBrush}"
-        CanResize="False">
+        xmlns:viewModels="clr-namespace:AvaloniaApplication.ViewModels"
+        x:DataType="viewModels:ViewModelBase"
+        Background="{DynamicResource PalePinkBrush}">
     <Design.DataContext><commands:ViewModelBase></commands:ViewModelBase></Design.DataContext>
-    <Window.Styles>
-        <Style Selector="Button.small">
+    <UserControl.Styles>
+        <Style Selector="Button.small"> 
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background" Value="{DynamicResource TyrianPurpleBrush}"/>
@@ -23,7 +23,7 @@
             <Setter Property="Background" Value="{DynamicResource OrchidPurpleBrush}"></Setter>
             <Setter Property="TextBlock.Foreground" Value="White"></Setter>
         </Style>
-    </Window.Styles>
+    </UserControl.Styles>
     <!-- Main Grid -->
     <Grid Name="MainGrid" RowDefinitions="Auto, *, Auto">
         
@@ -31,23 +31,29 @@
         <controls:AnimatedPopup Grid.Row="0" Grid.RowSpan="3"
                 Name="ChannelConfigPopup"
                 AnimationTime="0.3"
-                Open="False">
+                Open="{Binding ChannelConfigListIsOpen, Mode=TwoWay}">
             <Border Padding="20" Background="{DynamicResource PalePinkBrush}" BorderThickness="1" BorderBrush="Azure" CornerRadius="5">
-                <Expander IsExpanded="True">
-                    <Expander.Header>
-                         <Label Content="This is a header"></Label>
-                    </Expander.Header>
-                    <StackPanel>
-                        <Label Content="Blablablablabla"></Label>
-                        <Label Content="Blablablablabla"></Label>
-                        <Label Content="Blablablablabla"></Label>
-                        <Label Content="Blablablablabla"></Label>
-                        <Label Content="Blablablablabla"></Label>
-                        <Label Content="Blablablablabla"></Label>
-                        <Label Content="Blablablablabla"></Label>
-                        <Label Content="Blablablablabla"></Label>
-                    </StackPanel>
-                </Expander>
+                <ItemsControl ItemsSource="{Binding ChannelConfigurations}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Expander>
+                                <Expander.Header>
+                                        <Label Content="{Binding Key}"/>
+                                </Expander.Header>
+                                <ItemsControl ItemsSource="{Binding}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Button Content="{Binding Text}"
+                                                    Command="{Binding #ChannelConfigPopup.DataContext.ChannelConfigurationItemPressed}"
+                                                    CommandParameter="{Binding}">
+                                            </Button>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+                            </Expander>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
             </Border>
         </controls:AnimatedPopup>
         <!-- Top Bar -->
@@ -86,6 +92,7 @@
                 <StackPanel Orientation="Horizontal" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center">
                     <Label Content="{Binding BoldTitle}" Foreground="{DynamicResource TyrianPurpleBrush}" FontFamily="{StaticResource ResourceKey=Barlow-ExtraBoldItalic}" FontSize="24"></Label>
                     <Label Content="{Binding RegularTitle}"  Foreground="{DynamicResource TyrianPurpleBrush}" FontFamily="{StaticResource ResourceKey=Barlow-Italic}" FontSize="24"></Label>
+                    <Label Content="{Binding ChannelConfigListIsOpen}"  Foreground="{DynamicResource TyrianPurpleBrush}" FontFamily="{StaticResource ResourceKey=Barlow-Italic}" FontSize="24"></Label>
                 </StackPanel>
                 <Button Grid.Column="3" Padding="0,10,0,10">
                     <Image Source="avares://AvaloniaApplication/Assets/export_icon.png"/>
@@ -269,4 +276,4 @@
             </Grid>
 
         </Grid>
-</Window>
+</UserControl>

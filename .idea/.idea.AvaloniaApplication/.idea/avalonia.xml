@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="AvaloniaApplication/App.axaml" value="AvaloniaApplication/AvaloniaApplication.csproj" />
+        <entry key="AvaloniaApplication/Styles/AnimatedPopup.axaml" value="AvaloniaApplication/AvaloniaApplication.csproj" />
+        <entry key="AvaloniaApplication/Styles/LargeLabelControl.axaml" value="AvaloniaApplication/AvaloniaApplication.csproj" />
+        <entry key="AvaloniaApplication/Views/MainWindow.axaml" value="AvaloniaApplication/AvaloniaApplication.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

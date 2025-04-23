@@ -1,10 +1,17 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using Avalonia.Threading;
 using AvaloniaApplication.DataModels;
 using AvaloniaApplication.Services;
 using CommunityToolkit.Mvvm.Collections;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using SkiaSharp;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using System.Threading.Tasks;
+using AvaloniaApplication.DataModels;
+using AvaloniaApplication.Services;
 
 namespace AvaloniaApplication.ViewModels;
 
@@ -46,10 +53,10 @@ public partial class ViewModelBase : ObservableObject
     private void ChannelConfigurationItemPressed(ChannelConfigurationItem item)
     {
         //Update the selected item
-        SelectedChannelConfiguration = item;
+        SelectedChannelConfiguration = item; 
         
         //Close the menu
-        ChannelConfigListIsOpen = false;
+        ChannelConfigListIsOpen ^= true;
     }
 
     [RelayCommand]
