@@ -1,4 +1,4 @@
-<UserControl xmlns="https://github.com/avaloniaui"
+<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -8,10 +8,12 @@
         Width="1048" Height="645"
         x:Class="AvaloniaApplication.Views.MainWindow"
         xmlns:viewModels="clr-namespace:AvaloniaApplication.ViewModels"
-        x:DataType="viewModels:ViewModelBase"
-        Background="{DynamicResource PalePinkBrush}">
-    <Design.DataContext><commands:ViewModelBase></commands:ViewModelBase></Design.DataContext>
-    <UserControl.Styles>
+        Background="{DynamicResource PalePinkBrush}"
+        x:DataType="viewModels:ViewModelBase">
+    <Design.DataContext>
+        <viewModels:ViewModelBase/>
+    </Design.DataContext>
+    <Window.Styles>
         <Style Selector="Button.small"> 
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="Foreground" Value="White"/>
@@ -23,7 +25,7 @@
             <Setter Property="Background" Value="{DynamicResource OrchidPurpleBrush}"></Setter>
             <Setter Property="TextBlock.Foreground" Value="White"></Setter>
         </Style>
-    </UserControl.Styles>
+    </Window.Styles>
     <!-- Main Grid -->
     <Grid Name="MainGrid" RowDefinitions="Auto, *, Auto">
         
@@ -44,7 +46,7 @@
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <Button Content="{Binding Text}"
-                                                    Command="{Binding #ChannelConfigPopup.DataContext.ChannelConfigurationItemPressed}"
+                                                    Command="{Binding $parent[Window].((viewModels:ViewModelBase)DataContext).ChannelConfigurationItemPressedCommand}"
                                                     CommandParameter="{Binding}">
                                             </Button>
                                         </DataTemplate>
@@ -276,4 +278,4 @@
             </Grid>
 
         </Grid>
-</UserControl>
+</Window>

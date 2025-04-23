@@ -66,6 +66,3 @@
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/Avalonia.358D655D.Up2Date
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/AvaloniaApplication.genruntimeconfig.cache
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/ref/AvaloniaApplication.dll
-/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/AvaloniaApplication.dll
-/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/refint/AvaloniaApplication.dll
-/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/AvaloniaApplication.pdb

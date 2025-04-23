@@ -50,7 +50,7 @@ public partial class ViewModelBase : ObservableObject
     private void ChannelConfigButtonPressed() => ChannelConfigListIsOpen ^= true;
 
     [RelayCommand]
-    private void ChannelConfigurationItemPressed(ChannelConfigurationItem item)
+    public void ChannelConfigurationItemPressed(ChannelConfigurationItem item)
     {
         //Update the selected item
         SelectedChannelConfiguration = item; 
