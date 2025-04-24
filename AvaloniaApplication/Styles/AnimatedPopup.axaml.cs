@@ -109,16 +109,19 @@ public partial class AnimatedPopup : ContentControl
                 //If the parent is a grid...
                 if (Parent is Grid grid)
                 {
-                    //Set grid row/column span
-                    if (grid.RowDefinitions?.Count > 0) 
-                        mUnderlayControl.SetValue(Grid.RowSpanProperty, grid.RowDefinitions.Count);
+                    Dispatcher.UIThread.InvokeAsync(() =>
+                    {
+                        //Set grid row/column span
+                        if (grid.RowDefinitions?.Count > 0) 
+                            mUnderlayControl.SetValue(Grid.RowSpanProperty, grid.RowDefinitions.Count);
                 
-                    if (grid.ColumnDefinitions?.Count > 0) 
-                        mUnderlayControl.SetValue(Grid.ColumnSpanProperty, grid.ColumnDefinitions.Count);
+                        if (grid.ColumnDefinitions?.Count > 0) 
+                            mUnderlayControl.SetValue(Grid.ColumnSpanProperty, grid.ColumnDefinitions.Count);
                 
-                    //Insert the underlay control
-                    if (!grid.Children.Contains(mUnderlayControl)) 
-                        grid.Children.Insert(0, mUnderlayControl);;
+                        //Insert the underlay control
+                        if (!grid.Children.Contains(mUnderlayControl)) 
+                            grid.Children.Insert(0, mUnderlayControl);
+                    });
                 }
             }
             //If closing...
@@ -304,12 +307,16 @@ public partial class AnimatedPopup : ContentControl
             //If the parent is a grid...
             if (Parent is Grid grid)
             {
-                //Reset opacity
-                mUnderlayControl.Opacity = 0;
+                Dispatcher.UIThread.InvokeAsync(() =>
+                {
+                    //Reset opacity
+                    mUnderlayControl.Opacity = 0;
                 
-                //Remove the underlay
-                if (grid.Children.Contains(mUnderlayControl ))
-                    grid.Children.Remove(mUnderlayControl);
+                    //Remove the underlay
+                    if (grid.Children.Contains(mUnderlayControl ))
+                        grid.Children.Remove(mUnderlayControl);
+                });
+                
             }
         }
     }

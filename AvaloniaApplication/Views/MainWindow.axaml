@@ -35,10 +35,57 @@
                 AnimationTime="0.3"
                 Open="{Binding ChannelConfigListIsOpen, Mode=TwoWay}">
             <Border Padding="20" Background="{DynamicResource PalePinkBrush}" BorderThickness="1" BorderBrush="Azure" CornerRadius="5">
+                <Border.Resources>
+
+                    <ControlTheme x:Key="SmallExpander"
+                                  TargetType="Expander">
+                        <Setter Property="ContentTransition">
+                            <Setter.Value>
+                                <CrossFade Duration="00:00:00.25" />
+                            </Setter.Value>
+                        </Setter>
+                        <Setter Property="Template">
+                            <ControlTemplate>
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{TemplateBinding CornerRadius}">
+                                    <Grid RowDefinitions="Auto,*">
+                                        <ToggleButton Name="PART_toggle"
+                                                      Grid.Row="0"
+                                                      Padding="30"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalAlignment}"
+                                                      VerticalAlignment="{TemplateBinding VerticalAlignment}"
+                                                      Content="{TemplateBinding Header}"
+                                                      IsChecked="{TemplateBinding IsExpanded,
+                                                        Mode=TwoWay}" />
+                                        <ContentPresenter Name="PART_ContentPresenter"
+                                                          Grid.Row="1"
+                                                          Padding="{TemplateBinding Padding}"
+                                                          HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                          VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                                          Content="{TemplateBinding Content}"
+                                                          ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                          IsVisible="{TemplateBinding IsExpanded}" />
+                                    </Grid>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter>
+                        </ControlTheme>
+                        
+                </Border.Resources>
+                
+                <Border.Styles>
+                    <Style Selector="Expander.small">
+                        <Setter Property="Theme" Value="{StaticResource SmallExpander}"></Setter>
+                    </Style>
+                </Border.Styles>
+                
+                
                 <ItemsControl ItemsSource="{Binding ChannelConfigurations}">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate>
-                            <Expander>
+                            <Expander IsExpanded="True" Classes="small">
                                 <Expander.Header>
                                         <Label Content="{Binding Key}"/>
                                 </Expander.Header>
@@ -46,7 +93,7 @@
                                     <ItemsControl.ItemTemplate>
                                         <DataTemplate>
                                             <Button Content="{Binding Text}"
-                                                    Command="{Binding $parent[Window].((viewModels:ViewModelBase)DataContext).ChannelConfigurationItemPressedCommand}"
+                                                    Command="{Binding $parent[controls:AnimatedPopup].((viewModels:ViewModelBase)DataContext).ChannelConfigurationItemPressedCommand}"
                                                     CommandParameter="{Binding}">
                                             </Button>
                                         </DataTemplate>
