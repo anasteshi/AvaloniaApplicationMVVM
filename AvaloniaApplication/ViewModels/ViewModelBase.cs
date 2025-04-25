@@ -31,7 +31,7 @@ public partial class ViewModelBase : ObservableObject
     private string _regularTitle = "LOUDNESS METER";
     
     [ObservableProperty]
-    private bool _channelConfigListIsOpen = true;
+    private bool _channelConfigListIsOpen = false;
     
     [ObservableProperty]
     private ObservableGroupedCollection<string, ChannelConfigurationItem> _channelConfigurations = default!;
@@ -56,7 +56,7 @@ public partial class ViewModelBase : ObservableObject
         SelectedChannelConfiguration = item; 
         
         //Close the menu
-        ChannelConfigListIsOpen ^= true;
+        ChannelConfigListIsOpen = false;
     }
 
     [RelayCommand]
