@@ -23,15 +23,16 @@ public partial class ViewModelBase : ObservableObject
     #endregion
     
     #region Public Properties
+
+    [ObservableProperty] private double _volumeContainerSize;
     
-    [ObservableProperty]
-    private string _boldTitle = "AVALONIA";
+    [ObservableProperty] private double _volumePercentPosition;
     
-    [ObservableProperty]
-    private string _regularTitle = "LOUDNESS METER";
+    [ObservableProperty] private string _boldTitle = "AVALONIA";
     
-    [ObservableProperty]
-    private bool _channelConfigListIsOpen = false;
+    [ObservableProperty] private string _regularTitle = "LOUDNESS METER";
+    
+    [ObservableProperty] private bool _channelConfigListIsOpen = false;
     
     [ObservableProperty]
     private ObservableGroupedCollection<string, ChannelConfigurationItem> _channelConfigurations = default!;
@@ -83,6 +84,7 @@ public partial class ViewModelBase : ObservableObject
     public ViewModelBase(IAudioInterfaceService audioInterfaceService)
     {
         mAudioInterfaceService = audioInterfaceService;
+        Initialize();
     }
 
     /// <summary>
@@ -91,7 +93,37 @@ public partial class ViewModelBase : ObservableObject
     public ViewModelBase()
     {
         mAudioInterfaceService = new DummyAudioInterfaceService();
+        
+        Initialize();
     }
+
+    private void Initialize()
+    {
+        //Temporary code to move volume position
+        var tick = 0;
+        var input = 0.0;
+
+        var tempTimer = new DispatcherTimer
+        {
+            Interval = TimeSpan.FromSeconds(1/60.0)
+        };
+
+        tempTimer.Tick += (s, e) =>
+        {
+            tick++;
+
+            //Slow down ticks
+            input = tick / 20f;
+            
+            //Scale value
+            var scale = VolumeContainerSize / 2f;
+
+            VolumePercentPosition = (Math.Sin(input) + 1) * scale;
+        };
+        
+        tempTimer.Start();
+    }
+    
     #endregion
     
 

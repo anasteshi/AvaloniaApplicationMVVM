@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Threading;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -16,6 +17,12 @@ public partial class MainWindow : Window
     private Control mChannelConfigurationButton;
     private Control mChannelConfigurationPopup;
     private Control mMainGrid;
+    private Control mVolumeContainer;
+    
+    /// <summary>
+    /// The timeout timer to detect when auto-sizing has finished firing
+    /// </summary>
+    private Timer mSizingTimer;
     
 
     #endregion
@@ -26,13 +33,18 @@ public partial class MainWindow : Window
     /// Default Constructor
     /// </summary>
     /// <exception cref="Exception"></exception>
-    
-
-    #endregion
-
 
     public MainWindow()
     {
+        mSizingTimer = new Timer((t) =>
+        {
+            Dispatcher.UIThread.InvokeAsync(() =>
+            {
+                //Update desired size
+                UpdateSizes();
+            });
+        });
+        
         InitializeComponent();
         DataContext = new ViewModelBase();
         Title = "Avalonia Loudness Meter";
@@ -42,8 +54,17 @@ public partial class MainWindow : Window
                                      throw new Exception("Cannot find Channel Config Popup by name");
         mMainGrid = this.FindControl<Control>("MainGrid") ??
                     throw new Exception("Cannot find Main Grid by name");
-        this.Loaded += MainWindow_Loaded;
+        mVolumeContainer = this.FindControl<Control>("VolumeContainer") ??
+        throw new Exception("Cannot find Volume Container by name");
+
+            this.Loaded += MainWindow_Loaded;
         this.DataContextChanged += MainWindow_DataContextChanged;
+    }
+    #endregion
+
+    private void UpdateSizes()
+    {
+        ((ViewModelBase)DataContext).VolumeContainerSize = mVolumeContainer.Bounds.Height;;
     }
     
     private async void MainWindow_DataContextChanged(object? sender, EventArgs e)
@@ -74,6 +95,10 @@ public partial class MainWindow : Window
 
     private void MainWindow_Loaded(object sender, EventArgs e)
     {
+        
+        mSizingTimer.Change(1, int.MaxValue);
+
+        
         Dispatcher.UIThread.InvokeAsync(() =>
         {
             //Get relative position of button, in relation to main grid
