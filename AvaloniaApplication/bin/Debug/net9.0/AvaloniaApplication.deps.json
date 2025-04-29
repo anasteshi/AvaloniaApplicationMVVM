@@ -14,7 +14,8 @@
           "Avalonia.Fonts.Inter": "11.2.1",
           "Avalonia.Native": "11.2.1",
           "Avalonia.Themes.Fluent": "11.2.1",
-          "CommunityToolkit.Mvvm": "8.4.0"
+          "CommunityToolkit.Mvvm": "8.4.0",
+          "ManagedBass": "3.1.1"
         },
         "runtime": {
           "AvaloniaApplication.dll": {}
@@ -335,6 +336,14 @@
           }
         }
       },
+      "ManagedBass/3.1.1": {
+        "runtime": {
+          "lib/netstandard1.4/ManagedBass.dll": {
+            "assemblyVersion": "3.1.1.0",
+            "fileVersion": "3.1.1.0"
+          }
+        }
+      },
       "MicroCom.Runtime/0.11.0": {
         "runtime": {
           "lib/net5.0/MicroCom.Runtime.dll": {
@@ -584,6 +593,13 @@
       "sha512": "sha512-DpF9JBzwws2dupOLnjME65hxQWWbN/GD40AoTkwB4S05WANvxo3n81AnQJKxWDCnrWfWhLPB36OF27TvEqzb/A==",
       "path": "harfbuzzsharp.nativeassets.win32/7.3.0.2",
       "hashPath": "harfbuzzsharp.nativeassets.win32.7.3.0.2.nupkg.sha512"
+    },
+    "ManagedBass/3.1.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qaIIM2VEmZ9DaNCIu306aXi5zS8LZQjo0SNkLb3AjkpxKXA9K/O/LndCogC+cJPb2IKeChJEEXR42JEe6UTq/A==",
+      "path": "managedbass/3.1.1",
+      "hashPath": "managedbass.3.1.1.nupkg.sha512"
     },
     "MicroCom.Runtime/0.11.0": {
       "type": "package",

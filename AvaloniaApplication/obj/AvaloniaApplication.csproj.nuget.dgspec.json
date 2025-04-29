@@ -72,6 +72,10 @@
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.4.0, )"
+            },
+            "ManagedBass": {
+              "target": "Package",
+              "version": "[3.1.1, )"
             }
           },
           "imports": [

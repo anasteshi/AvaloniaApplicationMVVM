@@ -1,12 +1,16 @@
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Threading;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Media;
 using Avalonia.Threading;
+using AvaloniaApplication.Services;
 using AvaloniaApplication.ViewModels;
+using ManagedBass;
 
 namespace AvaloniaApplication.Views;
 
@@ -76,6 +80,36 @@ public partial class MainWindow : Window
             {
                 // Now it's much safer to access the ViewModel and its command
                 await viewModel.LoadSettingsCommand.ExecuteAsync(null);
+                Task.Run(async () =>
+                {
+                    // Output all devices, then select one
+                    foreach (var device in RecordingDevice.Enumerate())
+                        Console.WriteLine($"{device?.Index}: {device?.Name}");
+ 
+                    var outputPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "MBass");
+                    Directory.CreateDirectory(outputPath);
+                    var filePath = Path.Combine(outputPath, DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss") + ".wav");
+                    using var writer = new WaveFileWriter(new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Read), new WaveFormat());
+ 
+                    using var mCaptureDevice = new AudioCaptureService(1);
+ 
+                    mCaptureDevice.DataAvailable += (buffer, length) =>
+                    {
+                        writer.Write(buffer, length);
+                     
+                        Console.WriteLine(BitConverter.ToString(buffer));
+                    };
+             
+                    mCaptureDevice.Start();
+ 
+                    await Task.Delay(3000);
+                 
+                    mCaptureDevice.Stop();
+ 
+                    await Task.Delay(100);
+                });
+
+                
             }
             catch (Exception ex)
             {
