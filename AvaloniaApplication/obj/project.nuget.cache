@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Tg4fEIncSKE=",
+  "dgSpecHash": "yB6Stord9uw=",
   "success": true,
   "projectFilePath": "/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/AvaloniaApplication.csproj",
   "expectedPackageFiles": [
@@ -28,6 +28,7 @@
     "/Users/anastasiiakholodiuk/.nuget/packages/harfbuzzsharp.nativeassets.win32/7.3.0.2/harfbuzzsharp.nativeassets.win32.7.3.0.2.nupkg.sha512",
     "/Users/anastasiiakholodiuk/.nuget/packages/managedbass/3.1.1/managedbass.3.1.1.nupkg.sha512",
     "/Users/anastasiiakholodiuk/.nuget/packages/microcom.runtime/0.11.0/microcom.runtime.0.11.0.nupkg.sha512",
+    "/Users/anastasiiakholodiuk/.nuget/packages/nwaves/0.9.6/nwaves.0.9.6.nupkg.sha512",
     "/Users/anastasiiakholodiuk/.nuget/packages/skiasharp/2.88.8/skiasharp.2.88.8.nupkg.sha512",
     "/Users/anastasiiakholodiuk/.nuget/packages/skiasharp.nativeassets.linux/2.88.8/skiasharp.nativeassets.linux.2.88.8.nupkg.sha512",
     "/Users/anastasiiakholodiuk/.nuget/packages/skiasharp.nativeassets.macos/2.88.8/skiasharp.nativeassets.macos.2.88.8.nupkg.sha512",

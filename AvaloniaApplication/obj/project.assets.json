@@ -473,6 +473,19 @@
           "lib/net5.0/MicroCom.Runtime.dll": {}
         }
       },
+      "NWaves/0.9.6": {
+        "type": "package",
+        "compile": {
+          "lib/net5.0/NWaves.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net5.0/NWaves.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "SkiaSharp/2.88.8": {
         "type": "package",
         "dependencies": {
@@ -1287,6 +1300,23 @@
         "microcom.runtime.nuspec"
       ]
     },
+    "NWaves/0.9.6": {
+      "sha512": "LoVqwy6zgeF9l7Yj9rihWtnbbytZOLtU/lFqjnZRFqOCLJQj60NLFPA4nfvAdzK3PsHeShIw7AuJZKSElcYOGg==",
+      "type": "package",
+      "path": "nwaves/0.9.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net5.0/NWaves.dll",
+        "lib/net5.0/NWaves.xml",
+        "lib/netstandard2.0/NWaves.dll",
+        "lib/netstandard2.0/NWaves.xml",
+        "logo.png",
+        "nwaves.0.9.6.nupkg.sha512",
+        "nwaves.nuspec"
+      ]
+    },
     "SkiaSharp/2.88.8": {
       "sha512": "bRkp3uKp5ZI8gXYQT57uKwil1uobb2p8c69n7v5evlB/2JNcMAXVcw9DZAP5Ig3WSvgzGm2YSn27UVeOi05NlA==",
       "type": "package",
@@ -1515,7 +1545,8 @@
       "Avalonia.Native >= 11.2.1",
       "Avalonia.Themes.Fluent >= 11.2.1",
       "CommunityToolkit.Mvvm >= 8.4.0",
-      "ManagedBass >= 3.1.1"
+      "ManagedBass >= 3.1.1",
+      "NWaves >= 0.9.6"
     ]
   },
   "packageFolders": {
@@ -1593,6 +1624,10 @@
           "ManagedBass": {
             "target": "Package",
             "version": "[3.1.1, )"
+          },
+          "NWaves": {
+            "target": "Package",
+            "version": "[0.9.6, )"
           }
         },
         "imports": [

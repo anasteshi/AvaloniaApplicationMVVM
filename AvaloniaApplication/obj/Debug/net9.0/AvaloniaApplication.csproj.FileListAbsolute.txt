@@ -68,3 +68,4 @@
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/obj/Debug/net9.0/ref/AvaloniaApplication.dll
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/bin/Debug/net9.0/libbass.dylib
 /Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/bin/Debug/net9.0/ManagedBass.dll
+/Users/anastasiiakholodiuk/Desktop/AVAMVVM/AvaloniaApplication/AvaloniaApplication/bin/Debug/net9.0/NWaves.dll

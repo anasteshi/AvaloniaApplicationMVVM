@@ -26,6 +26,8 @@ public partial class ViewModelBase : ObservableObject
 
     [ObservableProperty] private double _volumeContainerSize;
     
+    [ObservableProperty] private string _shortTermLoudness = "-20 LUFS";
+    
     [ObservableProperty] private double _volumePercentPosition;
     
     [ObservableProperty] private string _boldTitle = "AVALONIA";
