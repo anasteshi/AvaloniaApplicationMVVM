@@ -1,52 +1,42 @@
 using Avalonia;
+using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
-using Avalonia.Data.Core.Plugins;
-using System.Linq;
 using Avalonia.Markup.Xaml;
 using AvaloniaApplication.Services;
 using AvaloniaApplication.ViewModels;
 using AvaloniaApplication.Views;
 
-namespace AvaloniaApplication;
-
-public partial class App : Application
+namespace AvaloniaApplication
 {
-    public override void Initialize()
+    public partial class App : Application
     {
-        AvaloniaXamlLoader.Load(this);
-    }
-
-    public override void OnFrameworkInitializationCompleted()
-    {
-        // Initialize the dependencies
-        var audioInterface = new DummyAudioInterfaceService();
-        var viewModel = new ViewModelBase(audioInterface);
-        
-        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+        public override void Initialize()
         {
-            // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
-            // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
-            DisableAvaloniaDataAnnotationValidation();
-            desktop.MainWindow = new MainWindow
-            {
-                DataContext = viewModel
-            };
+            AvaloniaXamlLoader.Load(this);
         }
 
-        base.OnFrameworkInitializationCompleted();
-    }
-
-    private void DisableAvaloniaDataAnnotationValidation()
-    {
-        // Get an array of plugins to remove
-        var dataValidationPluginsToRemove =
-            BindingPlugins.DataValidators.OfType<DataAnnotationsValidationPlugin>().ToArray();
-
-        // remove each entry found
-        foreach (var plugin in dataValidationPluginsToRemove)
+        public override void OnFrameworkInitializationCompleted()
         {
-            BindingPlugins.DataValidators.Remove(plugin);
+            // Initialize the dependencies
+            var audioInterface = new BassAudioCaptureService();
+            var mainViewModel = new ViewModelBase(audioInterface);
+            
+            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            {
+                desktop.MainWindow = new MainWindow
+                {
+                    DataContext = mainViewModel
+                };
+            }
+            else if (ApplicationLifetime is ISingleViewApplicationLifetime singleViewPlatform)
+            {
+                singleViewPlatform.MainView = new MainWindow
+                {
+                    DataContext = mainViewModel
+                };
+            }
+
+            base.OnFrameworkInitializationCompleted();
         }
     }
 }

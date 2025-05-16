@@ -1,25 +1,25 @@
 <Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="clr-namespace:AvaloniaApplication"
-        xmlns:commands="clr-namespace:AvaloniaApplication.ViewModels"
-        xmlns:valueConverters="clr-namespace:AvaloniaApplication.ValueConverters"
-        mc:Ignorable="d" d:DesignWidth="1048" d:DesignHeight="645"
-        Width="1048" Height="645"
-        x:Class="AvaloniaApplication.Views.MainWindow"
-        xmlns:viewModels="clr-namespace:AvaloniaApplication.ViewModels"
-        Background="{DynamicResource PalePinkBrush}"
-        x:DataType="viewModels:ViewModelBase"
-        CanResize="False">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:AvaloniaApplication"
+             xmlns:commands="clr-namespace:AvaloniaApplication.ViewModels"
+             xmlns:valueConverters="clr-namespace:AvaloniaApplication.ValueConverters"
+             mc:Ignorable="d" d:DesignWidth="1048" d:DesignHeight="645"
+             Width="1048" Height="645"
+             x:Class="AvaloniaApplication.Views.MainWindow"
+             xmlns:viewModels="clr-namespace:AvaloniaApplication.ViewModels"
+             xmlns:avalonia="clr-namespace:LiveChartsCore.SkiaSharpView.Avalonia;assembly=LiveChartsCore.SkiaSharpView.Avalonia"
+             Background="{DynamicResource PalePinkBrush}"
+             x:DataType="viewModels:ViewModelBase">
     <Design.DataContext>
         <viewModels:ViewModelBase />
     </Design.DataContext>
-    
+
     <Window.Resources>
         <valueConverters:CheckedToRotationConverter x:Key="CheckedToRotationConverter"></valueConverters:CheckedToRotationConverter>
     </Window.Resources>
-    
+
     <Window.Styles>
         <Style Selector="Button.small">
             <Setter Property="FontSize" Value="12" />
@@ -38,9 +38,9 @@
 
         <!--Channel Config Popup -->
         <controls:AnimatedPopup Grid.Row="0" Grid.RowSpan="3"
-                                Name="ChannelConfigPopup"
+                                Name="ChannelConfigurationPopup"
                                 AnimationTime="0.3"
-                                Open="{Binding ChannelConfigListIsOpen, Mode=TwoWay}">
+                                Open="{Binding ChannelConfigurationListIsOpen, Mode=TwoWay}">
             <Border Padding="0" Background="{DynamicResource PalePinkBrush}" BorderThickness="1" BorderBrush="Azure"
                     CornerRadius="5">
                 <Border.Resources>
@@ -227,15 +227,15 @@
                     <Label Grid.Column="0" Grid.Row="9">-54 —</Label>
                     <Label Grid.Column="0" Grid.Row="10"></Label>
 
-
-                    <!-- Volume Graph -->
-                    <!-- additional margin cuz it just doesnt work-->
-                    <Grid Grid.Row="0" Grid.Column="1" Grid.RowSpan="11" Width="20" RowDefinitions="23*, 37*"
-                          HorizontalAlignment="Left" Margin="18, 0">
-                        <Rectangle Grid.Row="0" Margin="0, 6, 0, -6" Fill="{DynamicResource CherryRedBrush}" Width="20"></Rectangle>
-                        <Rectangle Grid.Row="1" Margin="0, 6, 0, 6" Fill="White" Width="20"></Rectangle>
-                        <Canvas Grid.Row="0">
-                        </Canvas>
+                    <!-- Volume Bar -->
+                    <Grid Name="VolumeBar" Grid.Row="0" Grid.Column="1" Grid.RowSpan="11" Width="20"
+                          RowDefinitions="23*,37*">
+                        <Rectangle Grid.Row="0" Margin="0,8,0,-8" Fill="{DynamicResource CherryRedBrush}" Width="20"></Rectangle>
+                        <Rectangle Grid.Row="1" Margin="0,8,0,0" Fill="White" Width="20"></Rectangle>
+                        <Rectangle Grid.Row="0" VerticalAlignment="Top" Grid.RowSpan="2"
+                                   Height="{Binding VolumeBarMaskHeight}" Margin="0,8,0,0"
+                                   Fill="{DynamicResource DarkBlueBrush}" Width="20">
+                        </Rectangle>
                     </Grid>
 
                     <Label Grid.Column="1" Grid.Row="0">—</Label>
@@ -251,8 +251,9 @@
                     <Label Grid.Column="1" Grid.Row="10"></Label>
 
                     <!-- Arrow -->
-                    <Canvas Name="VolumeContainer" Grid.Row="0" Grid.Column="3" Grid.RowSpan="11" Width="20" Margin="6,0,0,0">
-                        <Path Canvas.Top="{Binding VolumePercentPosition}" Fill="White" Data="M 20 3 L 4 10 L 20 17 Z"/>
+                    <Canvas Name="VolumeContainer" Grid.Row="0" Grid.Column="3" Grid.RowSpan="11" Width="20"
+                            Margin="6,0,0,0">
+                        <Path Canvas.Top="{Binding VolumePercentPosition}" Fill="White" Data="M 20 3 L 4 10 L 20 17 Z" />
                     </Canvas>
 
                 </Grid>
@@ -294,14 +295,70 @@
                 </StackPanel>
             </StackPanel>
             <!-- Graph -->
-            <Rectangle Grid.Column="2" Fill="{DynamicResource PlumPinkBrush}" Margin="0,0,0,1"></Rectangle>
+            <Grid Grid.Column="2">
+                <avalonia:CartesianChart
+                    Margin="0, 15, 0, 0"
+                    Series="{Binding Series}"
+                    YAxes="{Binding YAxis}">
+                </avalonia:CartesianChart>
+
+                <Grid Grid.Row="0"
+                      Margin="10,10"
+                      RowDefinitions="Auto, 3*,3*,3*,9*,5*,4*,9*,9*,9*,6*"
+                      ColumnDefinitions="Auto, *">
+
+                    <Label Grid.Row="0" Content="0 —" Foreground="White" VerticalAlignment="Center"
+                           HorizontalAlignment="Right" />
+                    <Label Grid.Row="1" Content="-3 —" Foreground="White" VerticalAlignment="Center"
+                           HorizontalAlignment="Right" />
+                    <Label Grid.Row="2" Content="-6 —" Foreground="White" VerticalAlignment="Center"
+                           HorizontalAlignment="Right" />
+                    <Label Grid.Row="3" Content="-9 —" Foreground="White" VerticalAlignment="Center"
+                           HorizontalAlignment="Right" />
+                    <Label Grid.Row="4" Content="-18 —" Foreground="White" VerticalAlignment="Center"
+                           HorizontalAlignment="Right" />
+                    <Label Grid.Row="5" Content="-23 —" Foreground="White" VerticalAlignment="Center"
+                           HorizontalAlignment="Right" />
+                    <Label Grid.Row="6" Content="-27 —" Foreground="White" VerticalAlignment="Center"
+                           HorizontalAlignment="Right" />
+                    <Label Grid.Row="7" Content="-36 —" Foreground="White" VerticalAlignment="Center"
+                           HorizontalAlignment="Right" />
+                    <Label Grid.Row="8" Content="-45 —" Foreground="White" VerticalAlignment="Center"
+                           HorizontalAlignment="Right" />
+                    <Label Grid.Row="9" Content="-54 —" Foreground="White" VerticalAlignment="Center"
+                           HorizontalAlignment="Right" />
+
+                    <Rectangle Grid.Row="0" Grid.Column="1" Fill="White" VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch" Opacity="0.1" Height="1.5" />
+                    <Rectangle Grid.Row="1" Grid.Column="1" Fill="White" VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch" Opacity="0.1" Height="1.5" />
+                    <Rectangle Grid.Row="2" Grid.Column="1" Fill="White" VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch" Opacity="0.1" Height="1.5" />
+                    <Rectangle Grid.Row="3" Grid.Column="1" Fill="White" VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch" Opacity="0.1" Height="1.5" />
+                    <Rectangle Grid.Row="4" Grid.Column="1" Fill="White" VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch" Opacity="0.1" Height="1.5" />
+                    <Rectangle Grid.Row="5" Grid.Column="1" Fill="White" VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch" Opacity="0.1" Height="1.5" />
+                    <Rectangle Grid.Row="6" Grid.Column="1" Fill="White" VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch" Opacity="0.1" Height="1.5" />
+                    <Rectangle Grid.Row="7" Grid.Column="1" Fill="White" VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch" Opacity="0.1" Height="1.5" />
+                    <Rectangle Grid.Row="8" Grid.Column="1" Fill="White" VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch" Opacity="0.1" Height="1.5" />
+                    <Rectangle Grid.Row="9" Grid.Column="1" Fill="White" VerticalAlignment="Center"
+                               HorizontalAlignment="Stretch" Opacity="0.1" Height="1.5" />
+
+                </Grid>
+
+            </Grid>
         </Grid>
         <!-- Bottom Bar -->
         <Grid Grid.Row="2" Margin="20, 10" ColumnDefinitions="Auto, Auto, *, Auto, Auto, Auto, Auto, Auto">
             <Button Grid.Column="0"
-                    Command="{Binding #ChannelConfigPopup.BeginOpen}"
+                    Command="{Binding #ChannelConfigurationPopup.BeginOpen}"
                     Content="{Binding ChannelConfigurationButtonText}"
-                    Name="ChannelConfigButton" Margin="0,0,20,0" HorizontalAlignment="Center"
+                    Name="ChannelConfigurationButton" Margin="0,0,20,0" HorizontalAlignment="Center"
                     VerticalAlignment="Center">
             </Button>
             <Button Grid.Column="1" Margin="0,0,20,0" FontFamily="{StaticResource DancingScript-Regular}"
